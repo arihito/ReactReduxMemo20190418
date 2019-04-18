@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
+import Memo from './memo/Memo';
+import AddForm from './memo/AddForm';
+import FindForm from './memo/FindForm';
+import DelForm from './memo/DelForm';
 
 class App extends Component {
+  td = {
+    width: "250px"
+  }
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>
+            <code>Memo App</code> in React & Redux.
+          </h1>
         </header>
+        <AddForm />
+        <table><tbody><tr>
+          <td style={this.td}><FindForm /></td>
+          <td style={this.id}><DelForm /></td>
+        </tr></tbody></table>
+        <Memo />
       </div>
     );
   }
 }
 
-export default App;
+export default connect() (App);

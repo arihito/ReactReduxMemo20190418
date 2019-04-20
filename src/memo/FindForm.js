@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { findMemo, allMemo } from './Store';
+import { findMemo } from './Store';
 
 class FindForm extends Component {
   td = {
@@ -8,7 +8,7 @@ class FindForm extends Component {
   }
   input = {
     fontSize: '16px',
-    color: '#006',
+    color: '#333',
     padding: '10px 10px',
     margin: '15px 0',
     borderRadius: '3px 0 0 3px',
@@ -16,7 +16,7 @@ class FindForm extends Component {
   }
   fbtn = {
     fontSize: '16px',
-    color: '#006',
+    color: '#333',
     padding: '10px 10px',
     margin: '15px 0 0 0',
     borderRadius: ' 0 3px 3px 0',
@@ -25,7 +25,7 @@ class FindForm extends Component {
   }
   abtn = {
     fontSize: '16px',
-    color: '#006',
+    color: '#333',
     padding: '0 15px',
     margin: '15px 0 0 10px',
     maxHeight: '40px',
@@ -46,6 +46,7 @@ class FindForm extends Component {
     }
     this.doChange = this.doChange.bind(this);
     this.doAction = this.doAction.bind(this);
+    this.doClick = this.doClick.bind(this);
   }
 
   doChange(e) {
@@ -61,8 +62,7 @@ class FindForm extends Component {
   }
 
   doClick(e) {
-    let action = allMemo();
-    this.props.dispatch(action);
+    window.location.reload(true);
   }
 
   render() {

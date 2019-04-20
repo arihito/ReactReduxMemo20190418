@@ -20,9 +20,6 @@ export function memoReducer(state = initData, action) {
     case 'FIND':
       return findReduce(state, action);
 
-    case 'ALL':
-      return allReduce(state, action);
-
     default:
       return state;
   }
@@ -70,20 +67,6 @@ function findReduce(state, action) {
   };
 }
 
-function allReduce(state, action) {
-  let n = action.num
-  let fdata = [];
-  for (let i = 0; i < n; i++) {
-    fdata.push(state.data[i])
-  };
-  return {
-    data: state.data,
-    message: '全行表示',
-    mode: 'all',
-    fdata: fdata
-  };
-}
-
 // Memo削除のReduce処理
 function deleteReduce(state, action) {
   let newdata = state.data.slice();
@@ -119,14 +102,6 @@ export function findMemo(text) {
   return {
     type: 'FIND',
     find: text
-  }
-}
-
-// Memo全行表示のAction
-export function allMemo(num) {
-  return {
-    type: 'ALL',
-    all: num
   }
 }
 

@@ -21,7 +21,7 @@ class Item extends Component {
   data = {
     fontSize: '10px',
     backgroundColor: 'white',
-    color: 'darkblue',
+    color: '#333',
     padding: '11px 10px',
     border: '1px solid #eee',
     width: '80px'

@@ -5,7 +5,7 @@ import { addMemo } from './Store';
 class AddForm extends Component {
   input = {
     fontSize: '16px',
-    color: '#006',
+    color: '#333',
     padding: '10px 10px',
     margin: '15px 0',
     borderRadius: '3px 0 0 3px',
@@ -13,7 +13,7 @@ class AddForm extends Component {
   }
   btn = {
     fontSize: '16px',
-    color: '#006',
+    color: '#333',
     padding: '10px 10px',
     margin : '15px 0 0 0',
     borderRadius : ' 0 3px 3px 0',

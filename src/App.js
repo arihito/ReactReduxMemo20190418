@@ -12,6 +12,10 @@ class App extends Component {
     width: '960px',
     margin: 'auto'
   }
+  code = {
+    fontSize: '48px',
+    fontWeight: 'bold'
+  }
   // constructor(props) {
   //   super(props);
   // }
@@ -21,7 +25,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">
-            <code>Memo App</code> in React & Redux.
+            <code style={this.code}>MemoApp</code> in React & Redux.
           </h1>
         </header>
         <table style={this.table}><tbody><tr>

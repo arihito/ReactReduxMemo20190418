@@ -19,8 +19,9 @@
   pointer-events: none;
 }
 
-.App-link {
-  color: #61dafb;
+.App-title {
+  color: #ccc;
+  font-weight: normal;
 }
 
 @keyframes App-logo-spin {

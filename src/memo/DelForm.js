@@ -10,12 +10,12 @@ class DelForm extends Component {
     borderRadius: '2px 0 0 2px',
     background: '#fff',
     padding : '8px 0 9px',
-    marginRight: '-7px',
+    marginRight: '-6px',
     width: '150px'
   }
   select = {
     fontSize: '16px',
-    color: '#006',
+    color: '#333',
     cursor: 'pointer',
     textOverflow: 'ellipsis',
     border: 'none',
@@ -27,7 +27,7 @@ class DelForm extends Component {
   }
   btn = {
     fontSize: '16px',
-    color: '#006',
+    color: '#333',
     padding: '10px',
     borderRadius: ' 0 3px 3px 0',
     border: '1px solid #ccc',

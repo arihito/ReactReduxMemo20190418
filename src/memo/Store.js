@@ -1,8 +1,9 @@
-import { createStore } from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 const initData = {
   data: [{ message: 'sample data', created: new Date() }],
-  message: 'please type message:',
+  message: 'メッセージの入力',
   mode: 'default',
   fdata: []
 }
@@ -32,13 +33,13 @@ function addReduce(state, action) {
     message: action.message,
     created: new Date()
   };
-  // オブジェクトを配列に変換
+  // オブジェクトを配列に新規生成
   let newdata = state.data.slice();
   // 配列の先頭に追加
   newdata.unshift(data);
   return {
     data: newdata,
-    message: 'Added!',
+    message: '追加！',
     mode: 'default',
     fdata: []
   };
@@ -49,15 +50,17 @@ function findReduce(state, action) {
   let f = action.find;
   let fdata = [];
   state.data.forEach((value) => {
-    if (value.message.indexOf(f) >= 0) {
+    let res = value.message.indexOf(f);
+    if (res >= 0) {
       // 配列の最後に追加
       fdata.push(value)
     }
+    // console.warn(value.message, f, res,fdata);
   });
   return {
     data: state.data,
-    message: 'find "' + f + '":',
-    modoe: 'find',
+    message: '検索結果:「' + f + '」',
+    mode: 'find',
     fdata: fdata
   };
 }
@@ -68,7 +71,7 @@ function deleteReduce(state, action) {
   newdata.splice(action.inedx, 1);
   return {
     data: newdata,
-    message: 'delete "' + action.index + '":',
+    message: '削除番号:「' + action.index + '」',
     meode: 'delete',
     fdata: []
   }
@@ -96,9 +99,11 @@ export function deleteMemo(num) {
 export function findMemo(text) {
   return {
     type: 'FIND',
-    index: text
+    find: text
   }
 }
 
 // Storeを作成
-export default createStore(memoReducer);
+export default createStore(memoReducer,
+  composeWithDevTools(applyMiddleware())
+);

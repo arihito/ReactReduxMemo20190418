@@ -8,25 +8,26 @@ import FindForm from './memo/FindForm';
 import DelForm from './memo/DelForm';
 
 class App extends Component {
-  td = {
-    width: "250px"
+  table = {
+    width: '80vw',
+    margin: 'auto'
   }
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1>
+          <h1 className="App-title">
             <code>Memo App</code> in React & Redux.
           </h1>
         </header>
-        <AddForm />
-        <table><tbody><tr>
-          <td style={this.td}><FindForm /></td>
-          <td style={this.id}><DelForm /></td>
+        <table style={this.table}><tbody><tr>
+          <AddForm />
+          <td><FindForm /></td>
+          <td><DelForm /></td>
         </tr></tbody></table>
         <Memo />
       </div>

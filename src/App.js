@@ -9,7 +9,7 @@ import DelForm from './memo/DelForm';
 
 class App extends Component {
   table = {
-    width: '80vw',
+    width: '960px',
     margin: 'auto'
   }
   // constructor(props) {
@@ -26,8 +26,8 @@ class App extends Component {
         </header>
         <table style={this.table}><tbody><tr>
           <AddForm />
-          <td><FindForm /></td>
-          <td><DelForm /></td>
+          <FindForm />
+          <DelForm />
         </tr></tbody></table>
         <Memo />
       </div>

@@ -10,7 +10,7 @@ class DelForm extends Component {
     borderRadius: '2px 0 0 2px',
     background: '#fff',
     padding : '8px 0 9px',
-    marginRight: '-11px',
+    marginRight: '-7px',
     width: '150px'
   }
   select = {
@@ -70,14 +70,14 @@ class DelForm extends Component {
       <option key={n} value={n++}>{value.message.substring(0, 10)}</option>
     ))
     return (
-      <div>
+      <td>
         <form onSubmit={this.doAction}>
           <div style={this.selectWrap}>
             <select onChange={this.doChange} defaultValue="-1" style={this.select}>{items}</select>
           </div>
           <input type="submit" style={this.btn} value="Del" />
       </form>
-      </div>
+      </td>
     );
   }
 }

@@ -5,7 +5,7 @@ import Item from './Item';
 
 class Memo extends Component {
   table = {
-    width: '78vw',
+    width: '960px',
     margin: 'auto'
   }
 
@@ -20,6 +20,12 @@ class Memo extends Component {
         break;
 
       case 'find':
+        data = this.props.fdata.map((value) => (
+          <Item key={value.message} value={value} index={n++} />
+        ));
+        break;
+
+      case 'all':
         data = this.props.fdata.map((value) => (
           <Item key={value.message} value={value} index={n++} />
         ));

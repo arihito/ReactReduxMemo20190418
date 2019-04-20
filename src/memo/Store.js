@@ -2,7 +2,7 @@ import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 const initData = {
-  data: [{ message: 'sample data', created: new Date() }],
+  data: [],
   message: 'メッセージの入力',
   mode: 'default',
   fdata: []
@@ -20,6 +20,9 @@ export function memoReducer(state = initData, action) {
     case 'FIND':
       return findReduce(state, action);
 
+    case 'ALL':
+      return allReduce(state, action);
+
     default:
       return state;
   }
@@ -29,9 +32,11 @@ export function memoReducer(state = initData, action) {
 
 // Memo追加のReduce処理
 function addReduce(state, action) {
+  let d = new Date();
+  let f = ("0" + d.getHours()).slice(-2) + ':' + ("0" + d.getMinutes()).slice(-2) + ':' + ("0" + d.getSeconds()).slice(-2);
   let data = {
     message: action.message,
-    created: new Date()
+    created: f
   };
   // オブジェクトを配列に新規生成
   let newdata = state.data.slice();
@@ -65,10 +70,24 @@ function findReduce(state, action) {
   };
 }
 
+function allReduce(state, action) {
+  let n = action.num
+  let fdata = [];
+  for (let i = 0; i < n; i++) {
+    fdata.push(state.data[i])
+  };
+  return {
+    data: state.data,
+    message: '全行表示',
+    mode: 'all',
+    fdata: fdata
+  };
+}
+
 // Memo削除のReduce処理
 function deleteReduce(state, action) {
   let newdata = state.data.slice();
-  newdata.splice(action.inedx, 1);
+  newdata.splice(action.index, 1);
   return {
     data: newdata,
     message: '削除番号:「' + action.index + '」',
@@ -100,6 +119,14 @@ export function findMemo(text) {
   return {
     type: 'FIND',
     find: text
+  }
+}
+
+// Memo全行表示のAction
+export function allMemo(num) {
+  return {
+    type: 'ALL',
+    all: num
   }
 }
 

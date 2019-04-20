@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { findMemo } from './Store';
+import { findMemo, allMemo } from './Store';
 
 class FindForm extends Component {
+  td = {
+    display: 'flex'
+  }
   input = {
     fontSize: '16px',
     color: '#006',
@@ -11,7 +14,7 @@ class FindForm extends Component {
     borderRadius: '3px 0 0 3px',
     border: '1px solid #ccc'
   }
-  btn = {
+  fbtn = {
     fontSize: '16px',
     color: '#006',
     padding: '10px 10px',
@@ -19,6 +22,15 @@ class FindForm extends Component {
     borderRadius: ' 0 3px 3px 0',
     border: '1px solid #ccc',
     borderLeft: 'transparent'
+  }
+  abtn = {
+    fontSize: '16px',
+    color: '#006',
+    padding: '0 15px',
+    margin: '15px 0 0 10px',
+    maxHeight: '40px',
+    borderRadius: '3px',
+    border: '1px solid #ccc',
   }
   message = {
     fontSize: '18px',
@@ -48,12 +60,20 @@ class FindForm extends Component {
     this.props.dispatch(action);
   }
 
+  doClick(e) {
+    let action = allMemo();
+    this.props.dispatch(action);
+  }
+
   render() {
     return (
-      <form onSubmit={this.doAction}>
-        <input type="text" size="20" onChange={this.doChange} style={this.input} value={this.state.message} />
-        <input type="submit" style={this.btn} value="Find" />
-      </form>
+      <td style={this.td}>
+        <form onSubmit={this.doAction}>
+          <input type="text" size="20" onChange={this.doChange} style={this.input} value={this.state.message} />
+          <input type="submit" style={this.fbtn} value="Find" />
+        </form>
+        <button onClick={this.doClick} style={this.abtn}>All</button>
+      < /td>
     );
   }
 }
